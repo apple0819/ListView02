@@ -3,6 +3,7 @@ package com.example.listview02;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -39,11 +40,13 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.i("리스트뷰 아이템 클릭", String.format("%d번 줄 클릭",position));
-
+//                클릭된 방으 ㅣ정보를 목록에서 빼옴.
                 Room clickedRoom = roomDatas.get(position);
 
-//                클릭된 방의 주소를 Toast로 출력
-                Toast.makeText(mContext, clickedRoom.getAddress(), Toast.LENGTH_SHORT).show();
+//                방 상세 화면으로 이동.
+                Intent intent = new Intent(mContext, RoomDetailActivity.class);
+                intent.putExtra("room", clickedRoom);
+                startActivity(intent);
             }
         });
 
@@ -53,7 +56,6 @@ public class MainActivity extends BaseActivity {
 //                해당 방의 설명을 Toast로 출력
                 Room data = roomDatas.get(position);
 
-                Toast.makeText(mContext, data.getDescription(), Toast.LENGTH_SHORT).show();
                 return true;
             }
         });
