@@ -54,7 +54,11 @@ public class MainActivity extends BaseActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 //                해당 방의 설명을 Toast로 출력
-                Room data = roomDatas.get(position);
+//                Room data = roomDatas.get(position);
+//                Toast.makeText(mContxt, data.getDescription(), Toast. ).show();
+//                꾹 누르면, 해당 아이템을 목록에서 삭제.
+                roomDatas.remove(position);
+                roomAdapter.notifyDataSetChanged();
 
                 return true;
             }

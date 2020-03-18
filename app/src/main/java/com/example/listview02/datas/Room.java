@@ -9,6 +9,21 @@ public class Room implements Serializable {
     private int floor;
     private String description;
 
+    public String getFloorToString() {
+        String floorStr = "";
+        if(this.floor > 0 ) {
+            floorStr = String.format("%d층", this.floor);
+        }
+        else if(this.floor == 0) {
+            floorStr = "반지하";
+        }
+        else {
+            floorStr = String.format("지하 %d층", this.floor*-1);
+        }
+
+        return floorStr;
+    }
+
     public String getFormattedPrice() {
 //        상황에따라 ?억 ?천 가공
         if(this.price >= 10000) {
