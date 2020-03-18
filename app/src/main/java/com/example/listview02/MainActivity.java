@@ -53,7 +53,7 @@ public class MainActivity extends BaseActivity {
 //                해당 방의 설명을 Toast로 출력
                 Room data = roomDatas.get(position);
 
-                Toast.makeText(mContext, data.getDescription(), Toast.LENGTH_SHORT);
+                Toast.makeText(mContext, data.getDescription(), Toast.LENGTH_SHORT).show();
                 return true;
             }
         });
