@@ -4,6 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Toast;
 
 import com.example.listview02.adapters.RoomAdapter;
 import com.example.listview02.databinding.ActivityMainBinding;
@@ -30,6 +34,29 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void setupEvents() {
+
+        binding.roomListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.i("리스트뷰 아이템 클릭", String.format("%d번 줄 클릭",position));
+
+                Room clickedRoom = roomDatas.get(position);
+
+//                클릭된 방의 주소를 Toast로 출력
+                Toast.makeText(mContext, clickedRoom.getAddress(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        binding.roomListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+//                해당 방의 설명을 Toast로 출력
+                Room data = roomDatas.get(position);
+
+                Toast.makeText(mContext, data.getDescription(), Toast.LENGTH_SHORT);
+                return true;
+            }
+        });
 
     }
 
