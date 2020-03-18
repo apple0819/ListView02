@@ -56,6 +56,21 @@ public class RoomAdapter extends ArrayAdapter<Room> {
             priceTxt.setText(String.format("%,d", data.getPrice()));
         }
 
+//        주소 / 층수 결합해서.
+
+        String floorStr = "";
+        if(data.getFloor() > 0 ) {
+            floorStr = String.format("%d층", data.getFloor());
+        }
+        else if(data.getFloor() == 0) {
+            floorStr = "반지하";
+        }
+        else {
+            floorStr = String.format("지하 %d층", data.getFloor()*-1);
+        }
+
+
+        addressAndFloorTxt.setText(String.format("%s, %s", data.getAddress(), floorStr));
 
         return row;
     }
