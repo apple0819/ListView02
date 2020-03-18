@@ -69,8 +69,10 @@ public class RoomAdapter extends ArrayAdapter<Room> {
             floorStr = String.format("지하 %d층", data.getFloor()*-1);
         }
 
-
         addressAndFloorTxt.setText(String.format("%s, %s", data.getAddress(), floorStr));
+
+//        설명은 들어온 그대로 출력.
+        descTxt.setText(data.getDescription());
 
         return row;
     }
