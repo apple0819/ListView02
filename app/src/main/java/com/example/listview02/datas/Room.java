@@ -9,6 +9,19 @@ public class Room implements Serializable {
     private int floor;
     private String description;
 
+    public String getFormattedPrice() {
+//        상황에따라 ?억 ?천 가공
+        if(this.price >= 10000) {
+            int uk = this.price / 10000;
+            int thousand = this.price % 10000;
+
+            return String.format("%d억 %,d만원", uk, thousand);
+        }
+        else {
+           return  String.format("%,d만원", this.price);
+        }
+    }
+
     public Room(int price, String address, int floor, String description) {
         this.price = price;
         this.address = address;
